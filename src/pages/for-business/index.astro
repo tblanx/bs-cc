@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const solutions = [
+  {
+    name: "Growth Squad",
+    href: "/for-business/growth-squad",
+    desc: "An agile cross-functional revenue team model that aligns marketing, sales, and customer success around shared goals and collective ownership.",
+    tags: ["Marketing", "Sales", "Customer Success"],
+  },
+  {
+    name: "RevOps",
+    href: "/for-business/revops",
+    desc: "GTM audits, CRM implementations, and executive advisory — built to turn fragmented processes into revenue-generating machines.",
+    tags: ["GTM Audit", "CRM", "Advisory"],
+  },
+  {
+    name: "Strategy Syncs",
+    href: "/strategy-syncs",
+    desc: "Ad-hoc or weekly connects with Tony to align on KPIs, work through decisions, and keep momentum going.",
+    tags: ["Advisory", "Weekly", "KPIs"],
+  },
+];
+
+const clientTypes = [
+  { label: "Small Business & Startups", services: ["Business Strategy", "Go-to-Market", "Project Management", "Launch Support"] },
+  { label: "Enterprise", services: ["Digital Transformation", "AI Enablement", "Partnership Development", "New Business Creation"] },
+  { label: "Investors", services: ["CXO Bridge Services", "Advising & Mentorship", "Investment Evaluation", "Growth Strategy"] },
+];
+---
+
+<Layout
+  title="For Business"
+  description="blankspace delivers full-spectrum business strategy and execution for startups, growth-stage companies, and enterprises."
+>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-20 pb-16">
+    <div class="w-12 h-px bg-ink mb-8"></div>
+    <p class="text-xs tracking-widest uppercase text-grey font-medium mb-4">For Business</p>
+    <h1 class="text-5xl md:text-6xl font-extralight leading-tight tracking-tight mb-8 max-w-2xl">
+      Strategy that moves.<br />Execution that sticks.
+    </h1>
+    <p class="text-lg text-grey-dark font-light max-w-xl leading-relaxed">
+      We work alongside startups, growth companies, and enterprises to build
+      strategy, drive revenue, and deliver results that last.
+    </p>
+  </section>
+
+  <!-- Solutions -->
+  <section class="max-w-6xl mx-auto px-6 py-4 pb-16">
+    <p class="text-xs tracking-widest uppercase text-grey font-medium mb-10">Our Solutions</p>
+    <div class="flex flex-col gap-6">
+      {solutions.map(s => (
+        <a
+          href={s.href}
+          class="group border border-grey-light p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-ink transition-colors"
+        >
+          <div class="flex-1">
+            <h3 class="text-xl font-light mb-2 group-hover:text-ink transition-colors">{s.name}</h3>
+            <p class="text-grey-dark font-light text-sm leading-relaxed max-w-lg">{s.desc}</p>
+          </div>
+          <div class="flex flex-wrap gap-2 md:justify-end">
+            {s.tags.map(tag => (
+              <span class="text-xs text-grey border border-grey-light px-3 py-1 font-light tracking-wide">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- By client type -->
+  <section class="bg-ink text-paper">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <p class="text-xs tracking-widest uppercase text-grey font-medium mb-12">Who we work with</p>
+      <div class="grid md:grid-cols-3 gap-10">
+        {clientTypes.map(ct => (
+          <div>
+            <h3 class="text-sm font-medium tracking-wide mb-4 text-paper">{ct.label}</h3>
+            <ul class="flex flex-col gap-2">
+              {ct.services.map(svc => (
+                <li class="text-grey font-light text-sm">{svc}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div>
+        <h2 class="text-3xl font-extralight mb-3">Ready to get to work?</h2>
+        <p class="text-grey-dark font-light">Tell us where you are and where you want to go.</p>
+      </div>
+      <a
+        href="/contact"
+        class="bg-ink text-paper px-8 py-4 text-sm font-medium tracking-wide hover:bg-grey-dark transition-colors whitespace-nowrap"
+      >
+        Start a conversation →
+      </a>
+    </div>
+  </section>
+
+</Layout>

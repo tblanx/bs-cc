@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LogoWall from "../components/LogoWall.astro";
+---
+
+<Layout title="blankspace" description="Full-spectrum strategy and execution — for social good and business growth.">
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-20">
+    <div class="max-w-3xl">
+      <p class="text-xs tracking-widest uppercase text-grey font-medium mb-6">blankspace</p>
+      <h1 class="text-5xl md:text-7xl font-extralight leading-none tracking-tight mb-8">
+        Strategy &amp; execution.<br />
+        For good.<br />
+        <span class="text-grey">For business.</span>
+      </h1>
+      <p class="text-lg text-grey-dark font-light max-w-xl leading-relaxed">
+        We work alongside nonprofits, family offices, startups, and enterprises —
+        bringing the same rigor and commitment to every engagement.
+      </p>
+    </div>
+
+    <!-- Two-path CTAs -->
+    <div class="mt-14 flex flex-col sm:flex-row gap-4">
+      <a
+        href="/for-good"
+        class="group flex items-center gap-4 bg-warm text-white px-8 py-5 text-sm font-medium tracking-wide hover:bg-warm/90 transition-colors"
+      >
+        For Good
+        <span class="text-white/60 group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+      <a
+        href="/for-business"
+        class="group flex items-center gap-4 border border-ink text-ink px-8 py-5 text-sm font-medium tracking-wide hover:bg-ink hover:text-paper transition-colors"
+      >
+        For Business
+        <span class="text-grey group-hover:text-paper group-hover:translate-x-1 transition-all">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-6xl mx-auto px-6">
+    <hr class="border-grey-light" />
+  </div>
+
+  <!-- What we do snapshot -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <p class="text-xs tracking-widest uppercase text-grey font-medium mb-12">What we do</p>
+    <div class="grid md:grid-cols-2 gap-12">
+
+      <!-- For Good -->
+      <div class="group">
+        <div class="w-8 h-px bg-warm mb-6"></div>
+        <h2 class="text-2xl font-light mb-4">For Good</h2>
+        <p class="text-grey-dark font-light leading-relaxed mb-6">
+          We support philanthropic organizations, family offices, and nonprofits
+          in building lasting impact — from strategic grantmaking to governance,
+          program scalability, and generational legacy planning.
+        </p>
+        <a href="/for-good" class="text-warm text-sm font-medium tracking-wide hover:underline underline-offset-4">
+          Explore impact work →
+        </a>
+      </div>
+
+      <!-- For Business -->
+      <div class="group">
+        <div class="w-8 h-px bg-ink mb-6"></div>
+        <h2 class="text-2xl font-light mb-4">For Business</h2>
+        <p class="text-grey-dark font-light leading-relaxed mb-6">
+          We partner with startups, growth-stage companies, and enterprises to
+          drive strategy, revenue operations, and market expansion — from
+          early-stage launch to enterprise transformation.
+        </p>
+        <a href="/for-business" class="text-ink text-sm font-medium tracking-wide hover:underline underline-offset-4">
+          Explore business work →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo wall -->
+  <section>
+    <div class="max-w-6xl mx-auto px-6 pt-16 pb-6">
+      <p class="text-xs tracking-widest uppercase text-grey font-medium mb-10">We've worked with</p>
+    </div>
+    <LogoWall />
+  </section>
+
+</Layout>

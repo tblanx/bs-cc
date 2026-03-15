@@ -1,0 +1,87 @@
+---
+import Wordmark from "./Wordmark.astro";
+const navLinks = [
+  { label: "For Good", href: "/for-good", accent: true },
+  { label: "For Business", href: "/for-business" },
+  { label: "Our Work", href: "/our-work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-paper border-b border-grey-light">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" aria-label="blankspace home">
+      <Wordmark height={22} />
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-8 text-sm font-light tracking-wide">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              "transition-colors duration-150",
+              link.accent
+                ? "text-warm font-medium hover:text-warm/70"
+                : "text-grey-dark hover:text-ink",
+              current.startsWith(link.href) && !link.accent
+                ? "text-ink font-medium"
+                : "",
+              current.startsWith(link.href) && link.accent
+                ? "underline underline-offset-4"
+                : "",
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="w-5 h-px bg-ink block transition-all"></span>
+      <span class="w-5 h-px bg-ink block transition-all"></span>
+      <span class="w-5 h-px bg-ink block transition-all"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-grey-light bg-paper">
+    <ul class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 text-sm font-light">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              "block py-1 transition-colors",
+              link.accent ? "text-warm font-medium" : "text-grey-dark hover:text-ink",
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const isOpen = !menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden", isOpen);
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+</script>

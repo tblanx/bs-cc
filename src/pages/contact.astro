@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact" description="Get in touch with blankspace.">
+
+  <section class="max-w-6xl mx-auto px-6 pt-20 pb-16">
+    <div class="w-12 h-px bg-warm mb-8"></div>
+    <p class="text-xs tracking-widest uppercase text-grey font-medium mb-4">Contact</p>
+    <h1 class="text-5xl md:text-6xl font-extralight leading-tight tracking-tight mb-8 max-w-2xl">
+      Let's get<br />to work.
+    </h1>
+    <p class="text-lg text-grey-dark font-light max-w-md leading-relaxed">
+      Tell us about your organization and what you're trying to accomplish.
+      We'll take it from there.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+
+    <!-- Success message (hidden by default) -->
+    <div id="success-msg" class="hidden max-w-lg mb-8 p-6 border border-warm bg-warm-light">
+      <p class="text-sm font-medium text-warm">Message sent.</p>
+      <p class="text-sm font-light text-grey-dark mt-1">Thanks — Clare and Tony will be in touch soon.</p>
+    </div>
+
+    <!-- Error message (hidden by default) -->
+    <div id="error-msg" class="hidden max-w-lg mb-8 p-6 border border-red-300 bg-red-50">
+      <p class="text-sm font-medium text-red-600">Something went wrong.</p>
+      <p class="text-sm font-light text-grey-dark mt-1">Please try again or email us directly.</p>
+    </div>
+
+    <form id="contact-form" class="max-w-lg flex flex-col gap-6">
+
+      <div class="flex flex-col gap-2">
+        <label class="text-xs tracking-widest uppercase text-grey font-medium" for="name">Name</label>
+        <input
+          id="name" name="name" type="text" required
+          class="border border-grey-light px-4 py-3 text-sm font-light bg-transparent focus:outline-none focus:border-ink transition-colors"
+          placeholder="Your name"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-xs tracking-widest uppercase text-grey font-medium" for="email">Email</label>
+        <input
+          id="email" name="email" type="email" required
+          class="border border-grey-light px-4 py-3 text-sm font-light bg-transparent focus:outline-none focus:border-ink transition-colors"
+          placeholder="your@email.com"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-xs tracking-widest uppercase text-grey font-medium" for="path">I'm reaching out about</label>
+        <select
+          id="path" name="path"
+          class="border border-grey-light px-4 py-3 text-sm font-light bg-transparent focus:outline-none focus:border-ink transition-colors"
+        >
+          <option value="">Select one</option>
+          <option value="for-good">For Good — philanthropic &amp; nonprofit work</option>
+          <option value="for-business">For Business — strategy &amp; consulting</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-xs tracking-widest uppercase text-grey font-medium" for="message">Message</label>
+        <textarea
+          id="message" name="message" rows="5" required
+          class="border border-grey-light px-4 py-3 text-sm font-light bg-transparent focus:outline-none focus:border-ink transition-colors resize-none"
+          placeholder="Tell us about your organization and goals..."
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        id="submit-btn"
+        class="bg-warm text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-warm/90 transition-colors self-start disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Send message →
+      </button>
+
+    </form>
+  </section>
+
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const successMsg = document.getElementById('success-msg')!;
+  const errorMsg = document.getElementById('error-msg')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    successMsg.classList.add('hidden');
+    errorMsg.classList.add('hidden');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      if (res.ok) {
+        form.reset();
+        successMsg.classList.remove('hidden');
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        errorMsg.classList.remove('hidden');
+      }
+    } catch {
+      errorMsg.classList.remove('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message →';
+    }
+  });
+</script>

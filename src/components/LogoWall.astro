@@ -1,0 +1,56 @@
+---
+const logos = [
+  { file: "Kroger_(2021)_logo.svg.png", alt: "Kroger" },
+  { file: "pg-150x150-1.jpg", alt: "P&G" },
+  { file: "hd-black-coca-cola-logo-png-7017516947784963lgffdrc6r.png", alt: "Coca-Cola" },
+  { file: "techstars-e1530733669847.png", alt: "Techstars" },
+  { file: "possible-150x150-1.png", alt: "Possible", invert: true },
+  { file: "cintrifuse-1-150x150-1.png", alt: "Cintrifuse", scale: true },
+  { file: "uptech-300x160-1.png", alt: "UpTech" },
+  { file: "goodwipes-300x72-1.png", alt: "Goodwipes" },
+  { file: "8451-300x109-1.png", alt: "84.51°" },
+  { file: "Bold-Fusion_notag_website-300x131-1.jpg", alt: "Bold Fusion" },
+  { file: "bybe-300x115-1.png", alt: "bybe" },
+  { file: "WHSE-300x91-1.png", alt: "Warehouse" },
+  { file: "ocean-150x150-1.png", alt: "Ocean" },
+  { file: "VENICE_Logo_BW-300x232-1.png", alt: "Venice" },
+  { file: "RW-300x35-1.png", alt: "Red Whale" },
+  { file: "zs.png", alt: "ZipScene" },
+  { file: "Allsmith-300x47-1.png", alt: "Allsmith" },
+  { file: "elementzb-150x58-1.png", alt: "ElementZB" },
+  { file: "citynorth-300x153-1.png", alt: "City North" },
+  { file: "nku-150x150-1.jpg", alt: "NKU" },
+  { file: "mu-300x211-1.png", alt: "Miami University" },
+  { file: "uc-768x216-1.png", alt: "University of Cincinnati" },
+  { file: "ud-150x150-1.png", alt: "UD", scale: true },
+  { file: "HC-150x150-1.png", alt: "Health Carousel", scale: true },
+];
+
+const half = Math.ceil(logos.length / 2);
+const rowOne = logos.slice(0, half);
+const rowTwo = logos.slice(half);
+
+// Logos with black backgrounds need invert so they show as dark-on-white like the others
+// Logos with scale:true need a larger visual footprint (small square logos)
+---
+
+{[rowOne, rowTwo].map((row, i) => (
+  <div class={`py-10 px-6 bg-white ${i === 1 ? "border-t border-grey-light/60" : ""}`}>
+    <div class="max-w-6xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-10 gap-y-8 items-center">
+      {row.map(logo => (
+        <div class="flex items-center justify-center w-28 h-12">
+          <img
+            src={`/logos/${logo.file}`}
+            alt={logo.alt}
+            class:list={[
+              "object-contain mix-blend-multiply transition-opacity duration-200",
+              logo.invert  ? "grayscale invert opacity-70 hover:opacity-100" : "grayscale opacity-50 hover:opacity-80",
+              logo.scale   ? "w-full h-full scale-125" : "w-full h-full",
+            ]}
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+))}

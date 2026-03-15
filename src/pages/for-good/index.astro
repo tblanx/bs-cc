@@ -1,0 +1,120 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const profiles = [
+  {
+    label: "Family Offices",
+    activities: [
+      "Strategic planning aligned with family values and associated roadmaps",
+      "Strategic grantmaking recommendations and investment alignment",
+      "Focus area research, organization due diligence, and pipeline building",
+      "Supporting grantee program scalability via expansion and replication roadmaps",
+    ],
+  },
+  {
+    label: "Foundations",
+    activities: [
+      "Strategic planning aligned with organizational values and associated roadmaps",
+      "Strategic grantmaking recommendations and investment alignment",
+      "Focus area research, organization due diligence, and pipeline building",
+      "Supporting grantee program scalability via expansion and replication roadmaps",
+    ],
+  },
+  {
+    label: "Multi-Generational Philanthropy",
+    activities: [
+      "Legacy planning aligned with family mission across generations",
+      "Strategic grantmaking recommendations and investment alignment",
+      "Focus area research, organization due diligence, and pipeline building",
+      "Supporting grantee program scalability via expansion and replication roadmaps",
+    ],
+  },
+  {
+    label: "Nonprofits",
+    activities: [
+      "Program model scalability readiness and strategic planning",
+      "Board governance, development, and alignment",
+      "Core KPI prioritization, planning, and implementation",
+      "Partnership building and funder relationship development",
+    ],
+  },
+];
+---
+
+<Layout
+  title="For Good"
+  description="blankspace partners with family offices, foundations, and nonprofits to build lasting philanthropic impact."
+>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-20 pb-16">
+    <div class="w-12 h-px bg-warm mb-8"></div>
+    <p class="text-xs tracking-widest uppercase text-warm font-medium mb-4">For Good</p>
+    <h1 class="text-5xl md:text-6xl font-extralight leading-tight tracking-tight mb-8 max-w-2xl">
+      Build a legacy<br />that lasts.
+    </h1>
+    <p class="text-lg text-grey-dark font-light max-w-xl leading-relaxed">
+      We partner with Impact Producers — the people inside family offices,
+      foundations, and nonprofits who are doing the hard work of turning
+      resources into real, lasting change.
+    </p>
+  </section>
+
+  <!-- Impact Producer profiles -->
+  <section class="max-w-6xl mx-auto px-6 pb-20">
+    <p class="text-xs tracking-widest uppercase text-grey font-medium mb-10">Who we work with</p>
+    <div class="grid md:grid-cols-2 gap-px bg-grey-light">
+      {profiles.map(profile => (
+        <div class="bg-paper p-10">
+          <div class="w-6 h-px bg-warm mb-5"></div>
+          <h3 class="text-xl font-light mb-6">{profile.label}</h3>
+          <ul class="flex flex-col gap-3">
+            {profile.activities.map(activity => (
+              <li class="flex gap-3 text-sm font-light text-grey-dark leading-relaxed">
+                <span class="text-warm mt-1 shrink-0">—</span>
+                <span>{activity}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Strategy Syncs callout -->
+  <section class="bg-warm-light">
+    <div class="max-w-6xl mx-auto px-6 py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div>
+        <p class="text-xs tracking-widest uppercase text-warm font-medium mb-3">Also available</p>
+        <h2 class="text-2xl font-light mb-2">Strategy Syncs</h2>
+        <p class="text-grey-dark font-light text-sm max-w-md leading-relaxed">
+          Ad-hoc or weekly connects with Clare — to align on KPIs, work through
+          decisions, and keep momentum going.
+        </p>
+      </div>
+      <a
+        href="/strategy-syncs"
+        class="border border-warm text-warm px-7 py-3 text-sm font-medium tracking-wide hover:bg-warm hover:text-white transition-colors whitespace-nowrap"
+      >
+        Learn more →
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div>
+        <h2 class="text-3xl font-extralight mb-3">Ready to drive change?</h2>
+        <p class="text-grey-dark font-light">Let's talk about your philanthropic goals.</p>
+      </div>
+      <a
+        href="/contact"
+        class="bg-warm text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-warm/90 transition-colors whitespace-nowrap"
+      >
+        Get in touch →
+      </a>
+    </div>
+  </section>
+
+</Layout>

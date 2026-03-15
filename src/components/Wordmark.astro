@@ -1,0 +1,29 @@
+---
+interface Props {
+  height?: number;
+  class?: string;
+}
+const { height = 24, class: className = "" } = Astro.props;
+---
+
+<!--
+  Wordmark: "blank" in ink + "space" in grey, Open Sans 400
+  viewBox width is generous — SVG will scale proportionally via height
+-->
+<svg
+  height={height}
+  viewBox="0 0 148 28"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  aria-label="blankspace"
+>
+  <text
+    y="21"
+    font-family="'Open Sans', system-ui, sans-serif"
+    font-weight="400"
+    font-size="22"
+    letter-spacing="-0.3"
+  >
+    <tspan fill="#111111">blank</tspan><tspan fill="#9B9B9B">space</tspan>
+  </text>
+</svg>
