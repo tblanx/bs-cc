@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+Astro.response.status = 404;
+---
+
+<Layout title="Page Not Found" description="The page you're looking for doesn't exist.">
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-20">
+    <div class="max-w-3xl">
+      <p class="text-xs tracking-widest uppercase text-grey font-medium mb-6">404</p>
+      <h1 class="text-5xl md:text-7xl font-extralight leading-none tracking-tight mb-8">
+        Page not found.
+      </h1>
+      <p class="text-lg text-grey-dark font-light max-w-xl leading-relaxed">
+        The page you're looking for doesn't exist or may have moved.
+      </p>
+    </div>
+
+    <div class="mt-14 flex flex-col sm:flex-row gap-4">
+      <a
+        href="/"
+        class="group flex items-center gap-4 bg-warm text-white px-8 py-5 text-sm font-medium tracking-wide hover:bg-warm/90 transition-colors"
+      >
+        Go home
+        <span class="text-white/60 group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+    </div>
+  </section>
+</Layout>
